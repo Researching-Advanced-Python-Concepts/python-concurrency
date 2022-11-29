@@ -21,6 +21,12 @@ def download_site(url):
 
 
 def download_all_sites(sites):
+    # pool creates a number of separate python interpreter processes
+    # and has each one run the spscified function on some of the items
+    # in the iterable
+    # if not provided the number of preocesses to create in the Pool,
+    # multiprocessing.Pool will determine the no. of CPUs in our computer
+    # and match that
     with multiprocessing.Pool(initializer=set_global_session) as pool:
         pool.map(download_site, sites)
 
