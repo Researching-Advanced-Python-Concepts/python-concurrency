@@ -11,5 +11,6 @@ worker1 = threading.Thread(target=func, args=(1,))
 worker2 = threading.Thread(target=func, args=(2,))
 
 # 3. Starting the threads
+# use execute them in same time use start func
 worker1.start()
 worker2.start()

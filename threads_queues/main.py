@@ -36,4 +36,5 @@ for j in range(10):
 
 # ends the program as soon as all the jobs inside the queue are done
 # and it becomes empty
+# join also means don't go the next statement until it's finished
 q.join()
