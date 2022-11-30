@@ -9,6 +9,8 @@ session = None
 
 
 def set_global_session():
+    # making it global so that for each process will have its own
+    # session
     global session
     if not session:
         session = requests.Session()
@@ -22,11 +24,18 @@ def download_site(url):
 
 def download_all_sites(sites):
     # pool creates a number of separate python interpreter processes
-    # and has each one run the spscified function on some of the items
+    # and has each one run the specified function on some of the items
     # in the iterable
-    # if not provided the number of preocesses to create in the Pool,
+    # if not provided the number of processes to create in the Pool,
     # multiprocessing.Pool will determine the no. of CPUs in our computer
     # and match that
+    # each process in our Pool has its own memory space. So they can't share
+    # things like Session object.
+    # we want to create one session for each process (not everytime the fn is
+    # called) and this is made possible by initializer
+    # there is no way to pass a return value back from the initializer to the fn
+    # called by download_site() so we intialize a global session that is unique
+    # for each process as they have their own memory space
     with multiprocessing.Pool(initializer=set_global_session) as pool:
         pool.map(download_site, sites)
 
