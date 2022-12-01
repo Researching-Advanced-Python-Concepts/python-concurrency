@@ -49,3 +49,15 @@ if __name__ == "__main__":
     download_all_sites(sites)
     duration = time.time() - start_time
     print(f"Downloaded {len(sites)} in {duration} seconds")
+    # Downloaded 160 in 7.185908317565918 seconds
+    # async version took 1.5841059684753418 seconds
+    # thread version took 8.194037199020386 seconds 
+    # synchronous version took 23.108558654785156 seconds
+
+# relatively easy to setup and requires little extra code
+# take full advantage of the CPU power in our computer
+
+# it requires some extra setup and the global session obj is strange
+# we have to spend some time thinking about which variables will be
+# accessed in each process
+# can't see gains in I/O bound problems
