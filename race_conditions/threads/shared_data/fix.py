@@ -34,6 +34,7 @@ def adder(amount, repeats, lock):
 def subtractor(amount, repeats, lock):
     global value
     for _ in range(repeats):
+        # lock.acquire()
         with lock:
             # copy the value
             tmp = value
@@ -45,6 +46,7 @@ def subtractor(amount, repeats, lock):
             sleep(0)
             # copy the value back
             value = tmp
+        # lock.release()
 
 
 # start a thread making additions
