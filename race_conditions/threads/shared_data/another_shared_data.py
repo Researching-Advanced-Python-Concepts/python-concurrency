@@ -46,9 +46,9 @@ subtractor_thread = Thread(target=subtractor, args=(100, 1000000))
 subtractor_thread.start()
 
 # wait for both threads to finish
-print('Waiting for threads to finish...')
+print("Waiting for threads to finish...")
 adder_thread.join()
 subtractor_thread.join()
 
 # report the value
-print(f'Value: {value}')
+print(f"Value: {value}")

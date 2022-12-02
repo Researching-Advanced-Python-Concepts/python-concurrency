@@ -5,6 +5,7 @@ import threading
 # this triggering allows something to happen
 event = threading.Event()
 
+
 def func():
     print("Waiting for event to trigger...")
     # make the func wait until the event is triggered

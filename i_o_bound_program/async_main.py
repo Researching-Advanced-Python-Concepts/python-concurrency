@@ -37,7 +37,7 @@ if __name__ == "__main__":
     duration = time.time() - start_time
     print(f"Downloaded {len(sites)} in {duration} seconds")
     # Downloaded 160 in 1.5841059684753418 seconds
-    # thread version took 8.194037199020386 seconds 
+    # thread version took 8.194037199020386 seconds
     # synchronous version took 23.108558654785156 seconds
 
 
@@ -49,5 +49,5 @@ if __name__ == "__main__":
 # if a task doesn't hand control back to the event loop, it(EL) can't break it
 # proper placement of async and await, requests doesn't notify the event loop
 # that it is blocked
-# a minor mistake in code can cause a task to run off and hold the processor for
-# a long time, starving other tasks that need running
+# a minor mistake in code can cause a task to run off and hold the processor
+# for a long time, starving other tasks that need running

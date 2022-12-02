@@ -28,7 +28,7 @@ def download_site(url):
 
 
 def download_all_sites(sites):
-    # create a pool of threads each of which can run concurrently (at the same time)
+    # create a pool of threads each of which can run concurrently(at same time)
     # executor controls how and when each of the threads in the pool will run.
     # it will execute the request in the pool.
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:

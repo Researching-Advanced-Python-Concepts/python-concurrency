@@ -44,7 +44,7 @@ for i in range(5):
 with condition:
     # wait to be notified
     print("Waiting for the end")
-    condition.wait_for(lambda : len(work_list) == 5)
+    condition.wait_for(lambda: len(work_list) == 5)
     print(f"Done, got: {work_list}")
 
 # first the 5 threads are started and each will acquire the condition

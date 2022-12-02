@@ -26,7 +26,6 @@ while not example_FIFO.empty():
     print(example_FIFO.get())
 
 
-
 print("********** LIFO **********")
 for i in range(5):
     example_LIFO.put(i)
@@ -42,5 +41,3 @@ for i in range(5):
 
 while not example_LIFO.empty():
     print(example_LIFO.get())
-
-

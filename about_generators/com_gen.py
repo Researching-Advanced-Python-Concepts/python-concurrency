@@ -2,7 +2,7 @@
 
 
 def test():
-    val = yield 1 # ln 12
+    val = yield 1  # ln 12
     print(val)  # "pokemon" is used here, ln 14
     yield 2  # when pokemon was sent, ln 14, ln 17
     yield 3

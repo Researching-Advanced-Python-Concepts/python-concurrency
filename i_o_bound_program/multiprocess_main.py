@@ -33,9 +33,9 @@ def download_all_sites(sites):
     # things like Session object.
     # we want to create one session for each process (not everytime the fn is
     # called) and this is made possible by initializer
-    # there is no way to pass a return value back from the initializer to the fn
-    # called by download_site() so we intialize a global session that is unique
-    # for each process as they have their own memory space
+    # there is no way to pass a return value back from the initializer to the
+    # fn called by download_site() so we intialize a global session that is
+    # unique for each process as they have their own memory space
     with multiprocessing.Pool(initializer=set_global_session) as pool:
         pool.map(download_site, sites)
 
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     print(f"Downloaded {len(sites)} in {duration} seconds")
     # Downloaded 160 in 7.185908317565918 seconds
     # async version took 1.5841059684753418 seconds
-    # thread version took 8.194037199020386 seconds 
+    # thread version took 8.194037199020386 seconds
     # synchronous version took 23.108558654785156 seconds
 
 # relatively easy to setup and requires little extra code

@@ -18,7 +18,7 @@ def task(condition, work_list):
     # add data to the work list
     work_list.append(204)
     # notify a waiting thread that the work is done
-    print('Thread sending notification...')
+    print("Thread sending notification...")
     with condition:
         condition.notify()
 
@@ -28,7 +28,7 @@ condition = Condition()
 # prepare the work list
 work_list = list()
 # wait to be notified that the data is ready
-print('Main thread waiting for data...')
+print("Main thread waiting for data...")
 # condition acquire, not doing this might cause race condition
 with condition:
     # start a new thread to perform some work
@@ -37,7 +37,7 @@ with condition:
     # wait to be notified
     condition.wait()
 # we know the data is ready
-print(f'Got data: {work_list}')
+print(f"Got data: {work_list}")
 
 # the new thread is defined and started. The threads block for a moment,
 # adds data to the list then notifies the waiting thread

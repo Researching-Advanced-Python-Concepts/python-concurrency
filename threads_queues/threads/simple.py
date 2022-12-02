@@ -1,10 +1,12 @@
 import threading
 import time
 
-# 1. defining a task as a function
+
 def func(x):
+    # 1. defining a task as a function
     time.sleep(1)
     print(f"Task {x} is done.")
+
 
 # 2. creating threads
 worker1 = threading.Thread(target=func, args=(1,))

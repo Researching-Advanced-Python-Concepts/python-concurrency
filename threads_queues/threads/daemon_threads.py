@@ -13,6 +13,7 @@ import time
 path = "text.txt"
 text = ""
 
+
 def readFile():
     # readFile in the daemon thread so its not important
     # we can just termindate the loop without terminating it

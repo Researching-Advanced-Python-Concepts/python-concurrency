@@ -2,8 +2,9 @@ import queue
 import threading
 import time
 
-# 1. defining task as a func
+
 def func(q, thread_no):
+    # 1. defining task as a func
     """
     Args:
         q (queue): queue of tasks
@@ -17,14 +18,21 @@ def func(q, thread_no):
         q.task_done()
         print(f"Thread #{thread_no} is doing task #{task} in the queue.")
 
+
 # This is FIFO queue
 q = queue.Queue()
 
 
 for i in range(4):
     # 2. Creating a thread
-    worker = threading.Thread(target=func, args=(q, i,),
-                              daemon=True)
+    worker = threading.Thread(
+        target=func,
+        args=(
+            q,
+            i,
+        ),
+        daemon=True,
+    )
     # if we don't specify daemon the program won't end
     worker.start()
 

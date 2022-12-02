@@ -7,7 +7,7 @@ from threading import Condition
 # target function
 def task(condition, number):
     # wait to be notified
-    print(f'Thread {number} waiting...')
+    print(f"Thread {number} waiting...")
     with condition:
         # the thread acquire the condition and
         # block waiting to be notified
@@ -16,7 +16,7 @@ def task(condition, number):
     value = random()
     sleep(value)
     # report a result
-    print(f'Thread {number} got {value}')
+    print(f"Thread {number} got {value}")
 
 
 # create a condition
