@@ -1,11 +1,8 @@
-# use multiprocessing.Manager
-# a manager is a server process that hosts python objects
-# and returns proxy objects. Porcesses can then use the
-# hosted object via the proxy objects, just like a shared global
-# variable
+# 1. multiprocessing.Lock
 from time import sleep
 from multiprocessing import Process
 from multiprocessing.managers import BaseManager
+from multiprocessing import Lock
 
 
 class UnsafeCounter:
@@ -53,15 +50,17 @@ class CustomManager(BaseManager):
 
 
 # task executed in a child process
-def adder_task(counter):
+def adder_task(counter, lock):
     for i in range(1000):
-        counter.increment()
+        with lock:
+            counter.increment()
 
 
 # task executed in a child process
-def subtractor_task(counter):
+def subtractor_task(counter, lock):
     for i in range(1000):
-        counter.decrement()
+        with lock:
+            counter.decrement()
 
 
 # protect the entry point
@@ -69,6 +68,8 @@ if __name__ == "__main__":
     # register the custom class on the custom manager
     # so it knows how to make it
     CustomManager.register("UnsafeCounter", UnsafeCounter)
+    lock = Lock()
+
     # create manager
     with CustomManager() as manager:
         # create the counter on the manager server process
@@ -76,8 +77,10 @@ if __name__ == "__main__":
         # processes and used to interact with the hosted object
         counter = manager.UnsafeCounter(0)
         # create child processes
-        adder_process = Process(target=adder_task, args=(counter,))
-        subtractor_process = Process(target=subtractor_task, args=(counter,))
+        adder_process = Process(target=adder_task,
+                                args=(counter, lock))
+        subtractor_process = Process(target=subtractor_task,
+                                     args=(counter, lock))
         # start child processes
         adder_process.start()
         subtractor_process.start()
