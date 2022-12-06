@@ -5,7 +5,7 @@ from multiprocessing.managers import BaseManager
 from multiprocessing import Lock
 
 
-class UnsafeCounter:
+class SafeCounter:
     # custom counter class that encourages the os to context switch
     # in the middle of the operations, essentially forcing a
     # race condition
@@ -67,7 +67,7 @@ def subtractor_task(counter, lock):
 if __name__ == "__main__":
     # register the custom class on the custom manager
     # so it knows how to make it
-    CustomManager.register("UnsafeCounter", UnsafeCounter)
+    CustomManager.register("SafeCounter", SafeCounter)
     lock = Lock()
 
     # create manager
