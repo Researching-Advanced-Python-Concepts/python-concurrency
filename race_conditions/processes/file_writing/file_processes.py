@@ -40,7 +40,8 @@ if __name__ == "__main__":
         pass
     # start some processes to write to the same file
     # processes = [Process(target=task, args=(filename, i)) for i in range(50)]
-    processes = [Process(target=task, args=(filename, i, lock)) for i in range(50)]
+    processes = [Process(target=task, args=(filename, i, lock))
+                 for i in range(50)]
     # start the processes
     for process in processes:
         process.start()
